@@ -11,7 +11,7 @@
             class="bg-white p-4 mb-4 rounded-md shadow-lg"
           >
             <div
-              class="border p-4 rounded hover:bg-gray-100 flex justify-between items-center"
+              class="border p-4 rounded hover:bg-gray-100 flex justify-between items-start"
             >
               <RouterLink
                 :to="`/projects/${project._id}`"
@@ -27,13 +27,19 @@
                 </div>
               </RouterLink>
 
-              <button
-                @click.stop="deleteProject(project._id)"
-                class="cursor-pointer text-xl font-bold ml-4"
-                title="Delete project"
-              >
-                🗑️
-              </button>
+              <div class="ml-4 text-right">
+                <button
+                  @click.stop="deleteProject(project._id)"
+                  class="cursor-pointer text-xl font-bold mb-4"
+                  title="Delete project"
+                >
+                  🗑️
+                </button>
+
+                <p v-if="project.deadline" class="text-sm text-gray-600 mt-2">
+                  📅 Deadline: {{ formatDate(project.deadline) }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -91,6 +97,10 @@ const deleteProject = async (projectId) => {
   } catch (err) {
     console.error("Error deleting project", err);
   }
+};
+const formatDate = (dateString) => {
+  const options = { year: "numeric", month: "short", day: "numeric" };
+  return new Date(dateString).toLocaleDateString(undefined, options);
 };
 onMounted(() => {
   fetchProjects();
