@@ -5,9 +5,26 @@
     </h1>
 
     <div v-if="project" class="bg-white shadow-md rounded-xl p-6">
-      <div class="mb-4">
-        <h2 class="text-2xl font-semibold text-gray-800">{{ project.name }}</h2>
-        <p class="text-gray-600">{{ project.description }}</p>
+      <div class="mb-4 flex justify-between items-start">
+        <div class="flex-1">
+          <h2 class="text-2xl font-semibold text-gray-800">
+            {{ project.name }}
+          </h2>
+          <p class="text-gray-600 ml-2 mt-2">{{ project.description }}</p>
+        </div>
+
+        <div class="text-right ml-4">
+          <button
+            @click="deleteProject(project._id)"
+            class="cursor-pointer text-xl mb-4"
+            title="Delete Project"
+          >
+            🗑️
+          </button>
+          <p v-if="project.deadline" class="text-sm text-gray-500 mt-1">
+            📅 Deadline: {{ formatDate(project.deadline) }}
+          </p>
+        </div>
       </div>
 
       <div class="flex flex-wrap gap-4 items-center justify-center mb-6">
@@ -138,6 +155,20 @@ const fetchProjectDetails = async () => {
     }
   } catch (error) {
     console.error("Failed to fetch project details", error);
+  }
+};
+const deleteProject = async (projectId) => {
+  const token = localStorage.getItem("token");
+  try {
+    await fetch(`http://localhost:5000/projects/${projectId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    route.push("/");
+  } catch (err) {
+    console.error("Error deleting project", err);
   }
 };
 const deleteTask = async (taskId) => {
