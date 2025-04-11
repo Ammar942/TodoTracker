@@ -140,8 +140,9 @@
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { useRoute } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
+const router = useRouter();
 const route = useRoute();
 const project = ref(null);
 
@@ -180,7 +181,7 @@ const deleteProject = async (projectId) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    route.push("/");
+    router.push("/");
   } catch (err) {
     console.error("Error deleting project", err);
   }

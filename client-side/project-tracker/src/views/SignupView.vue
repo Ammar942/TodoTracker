@@ -46,7 +46,7 @@ const handleSubmit = async () => {
         router.push("/login");
       }, 2000);
     } else {
-      error.value = data.message || "Something went wrong. Please try again.";
+      error.value = data.error || "Something went wrong. Please try again.";
     }
   } catch (err) {
     error.value = "Network error. Please try again.";
