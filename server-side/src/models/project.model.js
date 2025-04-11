@@ -5,6 +5,7 @@ const ProjectSchema = new mongoose.Schema(
     description: { type: String, required: true },
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: "Task" }],
+    deadline: { type: Date },
   },
 
   { timestamps: true }

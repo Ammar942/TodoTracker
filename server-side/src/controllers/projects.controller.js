@@ -12,10 +12,9 @@ const getUserProjects = asyncWrapperMiddleware(async (req, res, next) => {
   });
 });
 const addProject = asyncWrapperMiddleware(async (req, res, next) => {
-  const { name, description } = req.body;
+  const { name, description, deadline } = req.body;
   const userId = req.user._id;
   const existingProject = await Project.findOne({ name, userId });
-  console.log(existingProject);
   if (existingProject) {
     return res.status(400).json({
       status: "fail",
@@ -26,6 +25,7 @@ const addProject = asyncWrapperMiddleware(async (req, res, next) => {
     name,
     description,
     userId,
+    deadline,
   });
   return res.status(201).json({
     status: "success",
