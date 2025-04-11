@@ -30,7 +30,7 @@
       <div class="flex flex-wrap gap-4 items-center justify-center mb-6">
         <select
           v-model="filters.status"
-          class="border px-3 py-2 rounded-lg text-sm bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          class="cursor-pointer border px-3 py-2 rounded-lg text-sm bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">All Statuses</option>
           <option>Not Started</option>
@@ -40,7 +40,7 @@
 
         <select
           v-model="filters.priority"
-          class="border px-3 py-2 rounded-lg text-sm bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          class="cursor-pointer border px-3 py-2 rounded-lg text-sm bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">All Priorities</option>
           <option>High</option>
@@ -50,7 +50,7 @@
 
         <select
           v-model="filters.deadline"
-          class="border px-3 py-2 rounded-lg text-sm bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          class="cursor-pointer border px-3 py-2 rounded-lg text-sm bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
           <option value="">All Deadlines</option>
           <option value="today">Due Today</option>
@@ -124,7 +124,7 @@
         <p class="text-gray-500 mb-4">No tasks available.</p>
         <RouterLink
           to="/add-task"
-          class="bg-gray text-blue-500 px-4 py-2 rounded-lg shadow hover:bg-blue-700 hover:text-white"
+          class="bg-indigo-200 text-blue-500 px-4 py-2 rounded-lg shadow hover:bg-blue-700 hover:text-white"
         >
           ➕ Add Task
         </RouterLink>
