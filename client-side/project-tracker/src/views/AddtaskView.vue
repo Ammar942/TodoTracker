@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="max-w-4xl mx-auto p-6">
-      <h2 class="text-3xl font-semibold mb-6">Add New Task</h2>
+      <h2 class="text-3xl font-semibold mb-6">Add New Task 📝</h2>
 
       <form
         @submit.prevent="handleSubmit"

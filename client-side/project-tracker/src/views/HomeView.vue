@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="max-w-6xl mx-auto p-6">
-      <h2 class="text-3xl font-semibold mb-6">Projects</h2>
+      <h2 class="text-3xl font-semibold mb-6">📁 Projects</h2>
 
       <template v-if="projects">
         <div v-if="projects.length > 0">
@@ -11,7 +11,7 @@
             class="bg-white p-4 mb-4 rounded-md shadow-lg"
           >
             <div
-              class="border p-4 rounded hover:bg-gray-100 flex justify-between items-start"
+              class="p-4 rounded hover:bg-gray-100 flex justify-between items-start"
             >
               <RouterLink
                 :to="`/projects/${project._id}`"

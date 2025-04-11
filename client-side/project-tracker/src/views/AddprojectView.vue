@@ -1,55 +1,7 @@
-<!-- <template>
-  <div>
-    <div class="max-w-6xl mx-auto p-6">
-      <h2 class="text-3xl font-semibold mb-6">Add New Project</h2>
-      <form
-        @submit.prevent="handleSubmit"
-        class="bg-white p-6 rounded-md shadow-lg"
-      >
-        <div class="mb-4">
-          <label for="name" class="block text-sm font-medium text-gray-700"
-            >Project Name</label
-          >
-          <input
-            type="text"
-            id="name"
-            v-model="project.name"
-            required
-            class="w-full p-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <div v-if="message">
-            <p class="text-red-500 text-sm mt-2">{{ message }}</p>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <label
-            for="description"
-            class="block text-sm font-medium text-gray-700"
-            >Description</label
-          >
-          <textarea
-            id="description"
-            v-model="project.description"
-            required
-            class="w-full p-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          class="w-full p-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        >
-          Add Project
-        </button>
-      </form>
-    </div>
-  </div>
-</template> -->
 <template>
   <div>
     <div class="max-w-6xl mx-auto p-6">
-      <h2 class="text-3xl font-semibold mb-6">Add New Project</h2>
+      <h2 class="text-3xl font-semibold mb-6">Add New Project 📁</h2>
       <form
         @submit.prevent="handleSubmit"
         class="bg-white p-6 rounded-md shadow-lg"
