@@ -117,7 +117,18 @@
         </li>
       </ul>
 
-      <p v-else class="text-gray-500 mt-6 text-center">No tasks available.</p>
+      <div
+        v-else
+        class="text-center mt-6 flex flex-col items-center justify-center"
+      >
+        <p class="text-gray-500 mb-4">No tasks available.</p>
+        <RouterLink
+          to="/add-task"
+          class="bg-gray text-blue-500 px-4 py-2 rounded-lg shadow hover:bg-blue-700 hover:text-white"
+        >
+          ➕ Add Task
+        </RouterLink>
+      </div>
     </div>
 
     <div v-else class="text-gray-600 text-center mt-6">Loading project...</div>
