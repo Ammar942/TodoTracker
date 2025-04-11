@@ -89,11 +89,11 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { ref, onMounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 const router = useRouter();
-
+const route = useRoute();
 const task = ref({
   projectName: "",
   taskName: "",
@@ -129,4 +129,9 @@ const handleSubmit = async () => {
     console.error("Error:", error);
   }
 };
+onMounted(() => {
+  if (route.query.projectName) {
+    task.value.project = route.query.projectName;
+  }
+});
 </script>

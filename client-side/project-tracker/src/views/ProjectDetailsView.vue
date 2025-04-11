@@ -123,7 +123,10 @@
       >
         <p class="text-gray-500 mb-4">No tasks available.</p>
         <RouterLink
-          to="/add-task"
+          :to="{
+            path: '/add-task',
+            query: { projectName: project.name },
+          }"
           class="bg-indigo-200 text-blue-500 px-4 py-2 rounded-lg shadow hover:bg-blue-700 hover:text-white"
         >
           ➕ Add Task
