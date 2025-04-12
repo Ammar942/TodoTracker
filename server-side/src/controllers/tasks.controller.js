@@ -1,7 +1,7 @@
 const asyncWrapperMiddleware = require("../middlewares/asyncWrapper.middleware");
 const Project = require("../models/project.model");
 const AppError = require("../utils/appError");
-const agenda = require("../agenda");
+const agenda = require("../utils/agenda");
 const Task = require("../models/task.model");
 const addTaskToProject = asyncWrapperMiddleware(async (req, res, next) => {
   const { name, priority, endDate, reminder, project } = req.body;

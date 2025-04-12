@@ -4,8 +4,8 @@ const app = express();
 const cors = require("cors");
 const httpStatusText = require("./src/utils/httpStatusText");
 require("./src/utils/reminderScheduler");
-const agenda = require("./agenda");
-require("./jobs/reminderJob")(agenda);
+const agenda = require("./src/utils/agenda");
+require("./src/utils/reminderTask")(agenda);
 
 agenda.on("ready", async () => {
   console.log("Agenda started");
