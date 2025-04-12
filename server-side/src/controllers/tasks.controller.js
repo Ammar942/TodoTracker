@@ -1,6 +1,7 @@
 const asyncWrapperMiddleware = require("../middlewares/asyncWrapper.middleware");
 const Project = require("../models/project.model");
 const AppError = require("../utils/appError");
+const agenda = require("../agenda");
 const Task = require("../models/task.model");
 const addTaskToProject = asyncWrapperMiddleware(async (req, res, next) => {
   const { name, priority, endDate, reminder, project } = req.body;
@@ -12,6 +13,12 @@ const addTaskToProject = asyncWrapperMiddleware(async (req, res, next) => {
       message: "A project with this name doesn't exist exists.",
     });
   }
+  const reminderToMs = {
+    "24h": 24 * 60 * 60 * 1000,
+    "12h": 12 * 60 * 60 * 1000,
+    "1h": 1 * 60 * 60 * 1000,
+  };
+
   const task = await Task.create({
     taskName: name,
     priority,
@@ -20,6 +27,12 @@ const addTaskToProject = asyncWrapperMiddleware(async (req, res, next) => {
     projectName: project,
     user: userId,
   });
+  if (task.reminder) {
+    const reminderTime = new Date(task.endDate - reminderToMs[task.reminder]);
+    await agenda.schedule(reminderTime, "send task reminder", {
+      taskId: task._id,
+    });
+  }
   projectFounded.tasks.push(task._id);
   await projectFounded.save();
   return res.status(201).json({

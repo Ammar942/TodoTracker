@@ -4,6 +4,13 @@ const app = express();
 const cors = require("cors");
 const httpStatusText = require("./src/utils/httpStatusText");
 require("./src/utils/reminderScheduler");
+const agenda = require("./agenda");
+require("./jobs/reminderJob")(agenda);
+
+agenda.on("ready", async () => {
+  console.log("Agenda started");
+  await agenda.start();
+});
 
 const PORT = process.env.PORT || 5000;
 / * * * * DB * * * /;
